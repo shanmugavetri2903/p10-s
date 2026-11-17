@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biosphere - Medical Innovations</title>
+<style>
+* {
+    box-sizing: border-box; scroll-behavior: smooth;
+}
+body {
+    margin: 0; font-family: Arial, sans-serif;
+    background: #eaf5ff; color: #234;
+}
+header {
+    background: #0878c9; color: white;
+    text-align: center; padding: 18px;
+    font-size: 25px; font-weight: bold;
+}
+nav {
+    background: #064b80; padding: 12px;
+    text-align: center;
+}
+nav a {
+    color: white; text-decoration: none;
+    margin: 15px; font-weight: bold;
+}
+nav a:hover { color: #80eaff; }
+.container {
+    max-width: 1000px; margin: 20px auto;
+    padding: 20px; background: white;
+    border-radius: 12px; box-shadow: 0 3px 15px #b5cbdc;
+}
+h2 { text-align: center; color: #0878c9; }
+.intro {
+    text-align: center; line-height: 1.7;
+    padding: 10px;
+}
+.gallery {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 15px; margin-top: 20px;
+}
+.card {
+    text-align: center; background: #f0f8ff;
+    border-radius: 10px; padding: 12px;
+    transition: 0.4s;
+}
+.card:hover {
+    transform: translateY(-8px); box-shadow: 0 5px 15px #9bbbd3;
+}
+.picture {
+    height: 130px; display: flex;
+    justify-content: center; align-items: center;
+    font-size: 65px; background: linear-gradient(135deg, #c5edff, #e5f5ff);
+    border-radius: 8px;
+}
+.card h3 { color: #0878c9; font-size: 16px; }
+.card p { font-size: 13px; }
+button {
+    background: #0878e8; color: white;
+    border: none; padding: 10px 20px;
+    border-radius: 5px; cursor: pointer;
+}
+button:hover { background: #034d9c; }
+form { max-width: 500px; margin: 20px auto; }
+label {
+    display: block; color: #075db0;
+    font-weight: bold; margin-top: 12px;
+    font-size: 14px;
+}
+input, select {
+    width: 100%; padding: 10px;
+    margin-top: 5px; border: 1px solid #aaa;
+    border-radius: 4px;
+}
+.result { text-align: center; color: green; font-weight: bold; margin-top: 15px; }
+#clock { text-align: center; color: #0878c9; font-weight: bold; }
+footer {
+    background: #064b80; color: white;
+    text-align: center; padding: 15px;
+    margin-top: 20px;
+}
+@media(max-width:700px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width:450px) {
+    .gallery { grid-template-columns: 1fr; }
+    nav a { display: inline-block; margin: 7px; }
+}
+</style>
+</head>
+<body>
+<header id="heading">
+    BIOSPHERE - MEDICAL INNOVATIONS
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#innovations">Innovations</a>
+    <a href="#research">Research</a>
+</nav>
+<div class="container" id="home">
+    <h2>Biotechnology-Driven Medical Innovations</h2>
+    <p class="intro">
+        Biotechnology is transforming modern healthcare through
+        advanced research, innovative treatments and medical
+        discoveries. It helps scientists develop better solutions
+        for diagnosing and treating diseases.
+    </p>
+    <p id="clock">Loading time...</p>
+    <center>
+        <button onclick="showWelcome()">Explore Biosphere</button>
+    </center>
+    <p id="welcome" class="result"></p>
+    <h2 id="innovations">Medical Innovations</h2>
+
+    <div class="gallery">
+        <div class="card">
+            <div class="picture">🧬</div>
+            <h3>Gene Therapy</h3>
+            <p>Uses genetic techniques to treat or prevent inherited diseases.</p>
+            <button onclick="showInfo('Gene Therapy')">Learn More</button>
+        </div>
+        <div class="card">
+            <div class="picture">🔬</div>
+            <h3>Stem Cell Therapy</h3>
+            <p>Uses stem cells to repair damaged tissues and support regeneration.</p>
+            <button onclick="showInfo('Stem Cell Therapy')">Learn More</button>
+        </div>
+        <div class="card">
+            <div class="picture">💉</div>
+            <h3>Vaccine Technology</h3>
+            <p>Develops advanced vaccines to protect people against infectious diseases.</p>
+            <button onclick="showInfo('Vaccine Technology')">Learn More</button>
+        </div>
+        <div class="card">
+            <div class="picture">🩺</div>
+            <h3>Personalized Medicine</h3>
+            <p>Creates treatments based on an individual's genetic and medical information.</p>
+            <button onclick="showInfo('Personalized Medicine')">Learn More</button>
+        </div>
+    </div>
+    <h2 id="research">Research Interest Form</h2>
+    <form id="researchForm">
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName"
+        placeholder="Enter your name" required>
+        <label for="email">Email Address</label>
+        <input type="email" id="email"
+        placeholder="Enter your email" required>
+        <label for="interest">Select Your Research Interest</label>
+        <select id="interest" required>
+            <option value="">Choose an innovation</option>
+            <option>Gene Therapy</option>
+            <option>Stem Cell Therapy</option>
+            <option>Vaccine Technology</option>
+            <option>Personalized Medicine</option>
+        </select>
+        <br><br>
+        <center>
+            <button type="submit">Submit Research Interest</button>
+        </center>
+    </form>
+    <p id="output" class="result"></p>
+    <hr>
+    <center>
+        <button onclick="startClock()">Start Clock</button>
+        <button onclick="stopClock()">Stop Clock</button>
+        <button onclick="cancelWelcome()">Cancel Welcome</button>
+    </center>
+    <p id="info" class="result"></p>
+</div>
+<footer>
+    <p>© 2026 Biosphere | Biotechnology for Better Healthcare</p>
+</footer>
+
+<script>
+// querySelector()
+const title = document.querySelector("#heading");
+title.style.animation = "fade 2s";
+
+// setTimeout()
+let welcomeTimer = setTimeout(function() {
+    document.querySelector("#welcome").innerHTML =
+        "Welcome to the World of Medical Innovations!";
+}, 3000);
+
+// clearTimeout()
+function cancelWelcome() {
+    clearTimeout(welcomeTimer);
+    document.querySelector("#welcome").innerHTML =
+        "Welcome message cancelled!";
+}
+
+// setInterval()
+let clockTimer = null;
+function startClock() {
+    if (clockTimer === null) {
+        clockTimer = setInterval(function() {
+            document.querySelector("#clock").innerHTML =
+                "Current Time: " + new Date().toLocaleTimeString();
+        }, 1000);
+    }
+}
+
+// clearInterval()
+function stopClock() {
+    clearInterval(clockTimer);
+    clockTimer = null;
+    document.querySelector("#clock").innerHTML = "Clock stopped!";
+}
+
+// onclick buttons
+function showWelcome() {
+    document.getElementById("welcome").innerHTML =
+        "Discover the Future of Biotechnology!";
+}
+function showInfo(name) {
+    document.getElementById("info").innerHTML =
+        "You selected: " + name;
+}
+
+// Interactive form
+document.getElementById("researchForm").onsubmit = function(event) {
+    event.preventDefault();
+    let name = document.getElementById("studentName").value;
+    let interest = document.getElementById("interest").value;
+    document.getElementById("output").innerHTML =
+        "Thank you " + name +
+        "! Your interest in " + interest +
+        " has been submitted successfully.";
+};
+
+// Heading fade animation
+let style = document.createElement("style");
+style.innerHTML = `
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
